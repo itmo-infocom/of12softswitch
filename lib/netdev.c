@@ -248,7 +248,8 @@ netdev_setup_class(const struct netdev *netdev, uint16_t class_id,
 
     snprintf(command, sizeof(command), COMMAND_ADD_CLASS, netdev->name,
              TC_QDISC, TC_ROOT_CLASS, TC_QDISC, class_id, actual_rate,
-             netdev->speed*1000);
+             actual_rate);
+//             netdev->speed*1000);
     if (system(command) != 0) {
         VLOG_ERR(LOG_MODULE, "Problem configuring class %d for device %s",class_id,
                  netdev->name);
