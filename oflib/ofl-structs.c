@@ -229,7 +229,7 @@ ofl_utils_count_ofp_queue_props(void *data, size_t data_len, size_t *count) {
     d = (uint8_t *)data;
     (*count) = 0;
 
-    while (data_len >= sizeof(struct ofp_queue_prop_header)) {
+    if (data_len >= sizeof(struct ofp_queue_prop_header)) {
         prop = (struct ofp_queue_prop_header *)d;
 
         if (data_len < ntohs(prop->len) || ntohs(prop->len) < sizeof(struct ofp_queue_prop_header)) {
